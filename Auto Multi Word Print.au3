@@ -96,7 +96,6 @@ EndFunc
 ; - printFiles(): Prints the selected files with the specified number of copies and delay.
 Func printFiles()
    $delay = guictrlread($delayInput)
-   Sleep($delay * 1000)
    $copies = guictrlread($copiesInput)
    $count = _GUICtrlListBox_GetCount($fileListView)
 
@@ -108,6 +107,7 @@ Func printFiles()
    if $count > 1 Then
 	   For $i = 1 to $count
 		  _FilePrint(_GUICtrlListBox_GetText($fileListView, $i - 1))
+		   Sleep($delay * 1000)
 	   Next
 	   MsgBox(0, "Done", "Printing Done")
    EndIf
